@@ -27,8 +27,10 @@ public class ViewPagerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
+        Log.i(TAG, "进入viewpager中" );
         initView();
         initdata();
+
     }
 
     private void initdata() {
@@ -38,8 +40,7 @@ public class ViewPagerActivity extends AppCompatActivity {
             mFragments.add(listFragment);
 
         }
-        BaseViewPagerAdapter baseViewPagerAdapter = new BaseViewPagerAdapter
-                (getSupportFragmentManager(), mFragments, mTitles);
+        BaseViewPagerAdapter baseViewPagerAdapter = new BaseViewPagerAdapter (getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(baseViewPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){

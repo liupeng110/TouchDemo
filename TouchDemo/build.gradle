@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 android {
 
 
-    compileSdkVersion Integer.parseInt(ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.xujun.drag"
@@ -26,7 +26,8 @@ android {
 }
 dependencies {
 
-    compile "com.android.support:design:23.2.0"
-    compile 'com.android.support:appcompat-v7:24.+'
-    compile "com.android.support:recyclerview-v7:23.2.0"
+    //noinspection GradleCompatible
+    compile "com.android.support:design:25.4.0"
+    compile 'com.android.support:appcompat-v7:25.4.0'
+    compile "com.android.support:recyclerview-v7:25.4.0"
 }
