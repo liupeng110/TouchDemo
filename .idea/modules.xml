@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/TouchDemo.iml" filepath="$PROJECT_DIR$/.idea/TouchDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TouchDemo.iml" filepath="$PROJECT_DIR$/TouchDemo.iml" />
       <module fileurl="file://G:\my\money\TouchDemo\TouchDemo.iml" filepath="G:\my\money\TouchDemo\TouchDemo.iml" />
+      <module fileurl="file://G:\work\my\TouchDemo\.idea\TouchDemo.iml" filepath="G:\work\my\TouchDemo\.idea\TouchDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/TouchDemo/TouchDemo-TouchDemo.iml" filepath="$PROJECT_DIR$/TouchDemo/TouchDemo-TouchDemo.iml" />
+      <module fileurl="file://G:\work\my\TouchDemo\TouchDemo\TouchDemo-TouchDemo.iml" filepath="G:\work\my\TouchDemo\TouchDemo\TouchDemo-TouchDemo.iml" />
       <module fileurl="file://G:\my\money\TouchDemo\TouchDemo\TouchDemo-TouchDemo.iml" filepath="G:\my\money\TouchDemo\TouchDemo\TouchDemo-TouchDemo.iml" />
     </modules>
   </component>
