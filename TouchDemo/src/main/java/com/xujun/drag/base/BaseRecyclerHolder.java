@@ -45,21 +45,16 @@ public class BaseRecyclerHolder extends RecyclerView.ViewHolder {
     }
 
     public static BaseRecyclerHolder createViewHolder(Context context,View itemView) {
-
         BaseRecyclerHolder holder = new BaseRecyclerHolder(itemView,context);
         return holder;
     }
 
     public static BaseRecyclerHolder createViewHolder(Context context,ViewGroup parent, int layoutId) {
-        View itemView = LayoutInflater.from(context).inflate(layoutId, parent,
-                false);
-
+        View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
         return createViewHolder(context,itemView);
     }
 
-    /**
-     * 通过viewId获取控件
-     */
+    //通过view 获取控件
     public <T extends View> T getView(int viewId) {
         View view = mViews.get(viewId);
         if (view == null) {
@@ -68,63 +63,54 @@ public class BaseRecyclerHolder extends RecyclerView.ViewHolder {
         }
         return (T) view;
     }
-
     public View getConvertView() {
         return mConvertView;
     }
 
-    /**
-     * 设置TextView的值
-     */
+    //设置TextView的值
     public BaseRecyclerHolder setText(int viewId, String text) {
         TextView tv = getView(viewId);
         tv.setText(text);
         return this;
     }
-
     public BaseRecyclerHolder setImageResource(int viewId, int resId) {
         ImageView view = getView(viewId);
         view.setImageResource(resId);
         return this;
     }
-
     public BaseRecyclerHolder setImageBitmap(int viewId, Bitmap bitmap) {
         ImageView view = getView(viewId);
         view.setImageBitmap(bitmap);
         return this;
     }
-
     public BaseRecyclerHolder setImageDrawable(int viewId, Drawable drawable) {
         ImageView view = getView(viewId);
         view.setImageDrawable(drawable);
         return this;
     }
-
     public BaseRecyclerHolder setBackgroundColor(int viewId, int color) {
         View view = getView(viewId);
         view.setBackgroundColor(color);
         return this;
     }
-
     public BaseRecyclerHolder setBackgroundRes(int viewId, int backgroundRes) {
         View view = getView(viewId);
         view.setBackgroundResource(backgroundRes);
         return this;
     }
-
     public BaseRecyclerHolder setTextColor(int viewId, int textColor) {
         TextView view = getView(viewId);
         view.setTextColor(textColor);
         return this;
     }
 
-    @SuppressLint("NewApi")
+    @SuppressLint({"NewApi", "ObsoleteSdkInt"})
     public BaseRecyclerHolder setAlpha(int viewId, float value) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getView(viewId).setAlpha(value);
         } else {
             // Pre-honeycomb hack to set Alpha value
-            AlphaAnimation alpha = new AlphaAnimation(value, value);
+            AlphaAnimation alpha = new AlphaAnimation(value, value);//设置动画初始值
             alpha.setDuration(0);
             alpha.setFillAfter(true);
             getView(viewId).startAnimation(alpha);

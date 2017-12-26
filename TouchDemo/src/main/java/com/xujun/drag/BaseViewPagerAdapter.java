@@ -15,12 +15,9 @@ import java.util.List;
 public class BaseViewPagerAdapter extends FragmentPagerAdapter {
 
     List<Fragment> mFragments = new ArrayList<>();
-
     String[] mtitles;
 
-    public BaseViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
-        this(fm,fragments,null);
-    }
+    public BaseViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {  this(fm,fragments,null);  }
 
     public BaseViewPagerAdapter(FragmentManager fm, List<Fragment> fragments,String[] mtitles) {
         super(fm);
@@ -28,20 +25,13 @@ public class BaseViewPagerAdapter extends FragmentPagerAdapter {
         this.mtitles=mtitles;
     }
 
-
-
-    @Override
-    public Fragment getItem(int position) {
+    @Override public Fragment getItem(int position) {
         return mFragments.get(position);
     }
-
-    @Override
-    public int getCount() {
+    @Override public int getCount() {
         return mFragments.size();
     }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
+    @Override public CharSequence getPageTitle(int position) {
         return mtitles[position];
     }
 }

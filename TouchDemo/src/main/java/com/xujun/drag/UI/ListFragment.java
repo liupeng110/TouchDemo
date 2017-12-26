@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.xujun.drag.ItemAdapter;
 import com.xujun.drag.R;
 import com.xujun.drag.base.BaseFragment;
@@ -86,11 +87,9 @@ public class ListFragment extends BaseFragment {
      *
      * @param isVisibleToUser
      */
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
+    @Override public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.i(TAG, "setUserVisibleHint: mTitle=" + mTitle + "  " + " isVisibleToUser=" +
-                isVisibleToUser);
+        Logger.i( "setUserVisibleHint: mTitle=" + mTitle + "  " + " isVisibleToUser=" +  isVisibleToUser);
         if (isVisibleToUser) {//表示界面可见
             if (mNoHorizontalScrollView != null) {// 之所以判断是否为空，
                 Log.i(TAG, "setUserVisibleHint: mTitle=" + mTitle + "  " + " isVisibleToUser=" +

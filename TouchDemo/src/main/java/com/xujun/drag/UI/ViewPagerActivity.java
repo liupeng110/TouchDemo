@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.xujun.drag.BaseViewPagerAdapter;
 import com.xujun.drag.R;
 
@@ -27,7 +29,9 @@ public class ViewPagerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
-        Log.i(TAG, "进入viewpager中" );
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        Logger.d("进入viewpager中");
+
         initView();
         initdata();
 
@@ -38,8 +42,9 @@ public class ViewPagerActivity extends AppCompatActivity {
         for(int i=0;i<mTitles.length;i++){
             ListFragment listFragment = ListFragment.newInstance(mTitles[i]);
             mFragments.add(listFragment);
-
         }
+        Logger.d("进入viewpager中:"+mFragments.size());
+
         BaseViewPagerAdapter baseViewPagerAdapter = new BaseViewPagerAdapter (getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(baseViewPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);

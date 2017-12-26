@@ -23,23 +23,19 @@ public class RecyclerUtils {
         if(layoutManager ==null){
 
             layoutManager=new  LinearLayoutManager(context);
-            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,
-                    LinearLayoutManager.VERTICAL);
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context, LinearLayoutManager.VERTICAL);
             recyclerView.addItemDecoration(dividerItemDecoration);
             recyclerView.setLayoutManager(layoutManager);
         }else{
             if(layoutManager instanceof LinearLayoutManager){
-                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,
-                        LinearLayoutManager.VERTICAL);
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,  LinearLayoutManager.VERTICAL);
                 recyclerView.addItemDecoration(dividerItemDecoration);
             }else if(layoutManager instanceof GridLayoutManager){
-                DividerGridItemDecoration dividerGridItemDecoration = new
-                        DividerGridItemDecoration(context);
+                DividerGridItemDecoration dividerGridItemDecoration = new  DividerGridItemDecoration(context);
                 recyclerView.addItemDecoration(dividerGridItemDecoration);
 
             }else if(layoutManager instanceof StaggeredGridLayoutManager){
-                DividerGridItemDecoration dividerGridItemDecoration = new
-                        DividerGridItemDecoration(context);
+                DividerGridItemDecoration dividerGridItemDecoration = new DividerGridItemDecoration(context);
                 recyclerView.addItemDecoration(dividerGridItemDecoration);
             }
         }

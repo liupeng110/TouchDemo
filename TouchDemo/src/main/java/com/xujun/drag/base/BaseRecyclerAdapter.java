@@ -38,31 +38,21 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         mDatas = datas;
     }
 
-    @Override
-    public BaseRecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
+    @Override public BaseRecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(mContext, mItemLayoutId, null);
         BaseRecyclerHolder holder = new BaseRecyclerHolder(view);
         setListener(parent, holder, viewType);
         return holder;
     }
-
-    @Override
-    public void onBindViewHolder(final BaseRecyclerHolder holder, int position) {
+    @Override public void onBindViewHolder(final BaseRecyclerHolder holder, int position) {
         BaseRecyclerHolder baseHolder = (BaseRecyclerHolder) holder;
-
         convert(baseHolder, (T) mDatas.get(position), position);
     }
 
-    /**
-     * @param holder   自定义的ViewHolder对象，可以getView获取控件
-     * @param item     对应的数据
-     * @param position
-     */
+    //holder 未自定义viewholder对象  可以getview获取控件  item=对应的数据
     public abstract void convert(BaseRecyclerHolder holder, T item, int position);
 
-    @Override
-    public int getItemCount() {
+    @Override public int getItemCount() {
         return isEmpty() ? 0 : mDatas.size();
     }
 
@@ -70,20 +60,17 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
         return true;
     }
 
-    public void setClickListener(BaseRecyclerHolder holder, int id, View.OnClickListener
-            onClickListener) {
+    public void setClickListener(BaseRecyclerHolder holder, int id, View.OnClickListener onClickListener) {
         holder.getView(id).setOnClickListener(onClickListener);
     }
 
-    protected void setListener(final ViewGroup parent, final BaseRecyclerHolder viewHolder, int
-            viewType) {
+    protected void setListener(final ViewGroup parent, final BaseRecyclerHolder viewHolder, int  viewType) {
         if (!isEnabled(viewType)) return;
         viewHolder.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
-                    //这个方法是获取在holder里面真正的位置，而不是对应list的位置
-                    int position = viewHolder.getAdapterPosition();
+                    int position = viewHolder.getAdapterPosition();  //这个方法是获取在holder里面真正的位置，而不是对应list的位置
                     T t = mDatas.get(position);
                     mOnItemClickListener.onClick(v, viewHolder,  position);
                 }
@@ -106,27 +93,18 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
 
     public interface OnItemClickListener {
         void onClick(View view, RecyclerView.ViewHolder holder, int position);
-
     }
 
     public interface OnLongItemClickListener {
         boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position);
     }
 
-    /**
-     * 设置点击事件
-     *
-     * @param onItemClickListener
-     */
+    //点击事件
     public void setOnItemClickListener(BaseRecyclerAdapter.OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
 
-    /**
-     * 设置长按点击事件
-     *
-     * @param onLongItemClickListener
-     */
+    //长按
     public void setonLongItemClickListener(BaseRecyclerAdapter.OnLongItemClickListener onLongItemClickListener) {
         this.mOnLongItemClickListener = onLongItemClickListener;
     }

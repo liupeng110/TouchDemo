@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.orhanobut.logger.Logger;
 import com.xujun.drag.utils.LUtils;
 
 /**
@@ -18,36 +19,22 @@ import com.xujun.drag.utils.LUtils;
 public abstract class BaseFragment extends Fragment {
     protected View mView;
 
-    /**
-     * 表示View是否被初始化
-     */
-    protected boolean isViewInitiated;
-    /**
-     * 表示对用户是否可见
-     */
-    protected boolean mIsVisibleToUser;
-    /**
-     * 表示数据是否初始化
-     */
-    protected boolean isDataInitiated;
+    protected boolean isViewInitiated;//view是否被初始化
+    protected boolean mIsVisibleToUser;//对用户是否可见
+    protected boolean isDataInitiated;//数据是否初始化
     private Context mContext;
 
-    @Override
-    public void onAttach(Context context) {
+    @Override public void onAttach(Context context) {
         super.onAttach(context);
         mContext=context;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    @Override  public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState);  }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
-            Bundle savedInstanceState) {
-        LUtils.i(this.getClass().getSimpleName()+"<<<<<<<<<<<<   onCreateView");
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Logger.i("进入"+this.getClass().getSimpleName()+","+"<<<<<<<<<<<<   onCreateView");
         if(mView==null){
             mView=View.inflate(mContext,getLayoutId(),null);
         }else{
@@ -80,43 +67,39 @@ public abstract class BaseFragment extends Fragment {
     protected void initListener() {
     }
 
-    @Override
-    public void onPause() {
+    @Override public void onPause() {
         super.onPause();
-        LUtils.i(this.getClass().getSimpleName()+"<<<<<<<<<<<<   onPause");
+        Logger.i("进入"+this.getClass().getSimpleName()+"<<<<<<<<<<<<   onPause");
     }
 
-    @Override
-    public void onResume() {
+    @Override public void onResume() {
         super.onResume();
-        LUtils.i(this.getClass().getSimpleName()+"<<<<<<<<<<<<   onResume");
+        Logger.i("进入"+this.getClass().getSimpleName()+"<<<<<<<<<<<<   onResume");
     }
 
-    @Override
-    public void onStop() {
+    @Override public void onStop() {
         super.onStop();
-        LUtils.i(this.getClass().getSimpleName()+"<<<<<<<<<<<<   onStop");
-    }
+        Logger.i("进入"+this.getClass().getSimpleName()+"<<<<<<<<<<<<   onStop");
+         }
 
-    @Override
-    public void onDestroyView() {
+    @Override  public void onDestroyView() {
         super.onDestroyView();
-        LUtils.i(this.getClass().getSimpleName()+"<<<<<<<<<<<<   onDestroyView");
+        Logger.i("进入"+this.getClass().getSimpleName()+"<<<<<<<<<<<<   onDestroyView");
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-//        LUtils.i(this.getClass().getSimpleName()+"<<<<<<<<<<<<   setUserVisibleHint"+isVisibleToUser);
+        Logger.i("进入"+this.getClass().getSimpleName()+"<<<<<<<<<<<<   setUserVisibleHint"+isVisibleToUser);
         super.setUserVisibleHint(isVisibleToUser);
         this.mIsVisibleToUser = isVisibleToUser;
         prepareFetchData();
     }
 
-    public abstract void fetchData();
+    public abstract void fetchData();//取数据
 
     public boolean prepareFetchData() {
         return prepareFetchData(false);
-    }
+    }//准备取数据
 
     public boolean prepareFetchData(boolean forceUpdate) {
         if (mIsVisibleToUser && isViewInitiated && (!isDataInitiated || forceUpdate)) {
@@ -125,11 +108,10 @@ public abstract class BaseFragment extends Fragment {
             return true;
         }
         return false;
-    }
+    }//更新数据
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
+    @Override  public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        LUtils.i(this.getClass().getSimpleName()+"<<<<<<<<<<<<   onHiddenChanged"+hidden);
+        Logger.i("进入"+this.getClass().getSimpleName()+"<<<<<<<<<<<<   onHiddenChanged"+hidden);
     }
 }

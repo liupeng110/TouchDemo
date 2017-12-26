@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.orhanobut.logger.Logger;
+
 /**
  * @ explain:
  * @ author：xujun on 2016/10/26 11:10
@@ -22,18 +24,16 @@ public class ChildViewPager extends ViewPager {
         super(context, attrs);
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
+    @Override public boolean dispatchTouchEvent(MotionEvent ev) {
         int curPosition;
 
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                getParent().requestDisallowInterceptTouchEvent(true);
-                break;
+                getParent().requestDisallowInterceptTouchEvent(true);  break;
             case MotionEvent.ACTION_MOVE:
                 curPosition = this.getCurrentItem();
                 int count = this.getAdapter().getCount();
-                Log.i(TAG, "curPosition:=" +curPosition);
+                Logger.i("childViewPager当前position:"+curPosition);
 //                全部由孩子拦截触摸事件
 /*                getParent().requestDisallowInterceptTouchEvent(true);*/
                 // 当当前页面在最后一页和第0页的时候，由父亲拦截触摸事件
