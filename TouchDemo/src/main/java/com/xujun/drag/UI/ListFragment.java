@@ -45,7 +45,7 @@ public class ListFragment extends BaseFragment {
 
     ScrollView mNoHorizontalScrollView;
 
-    private int mSize = 4;
+    private int mSize = 4;  
 
     private int mScrollY;
     private int mScrollX;
