@@ -3,13 +3,12 @@ apply plugin: 'com.android.application'
 android {
 
 
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.xujun.drag"
-        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
-        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TAGET_SDK_VERSION)
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 //        multiDexEnabled true//允许多重
